@@ -50,7 +50,7 @@ const NavBar = () => {
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             {links}
 
-                            <label className="swap swap-rotate ">
+                            <label className="swap swap-rotate hidden">
 
                                 {/* this hidden checkbox controls the state */}
                                 <input type="checkbox" onChange={handleToogle} checked={theme == "light" ? false : true} />
@@ -70,7 +70,7 @@ const NavBar = () => {
                     <ul className="menu flex gap-5 menu-horizontal px-5">
                         {links}
                     </ul>
-                    <label className="swap swap-rotate ">
+                    <label className="swap swap-rotate hidden">
 
                         {/* this hidden checkbox controls the state */}
                         <input type="checkbox" onChange={handleToogle} checked={theme == "light" ? false : true} />
