@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 
 const SignUp = () => {
 
-    const { createUser, updateUserProfile, signInWithGoogle, githubLogin } = useContext(AuthContext);
+    const { createUser, updateUserProfile, signInWithGoogle,  } = useContext(AuthContext);
 
     const [registerError, setRegisterError] = useState('');
     const [registerSuccess, setRegisterSuccess] = useState('');

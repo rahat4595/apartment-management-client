@@ -9,8 +9,15 @@ import {
 import { router } from './Routes/Routes';
 import Context from './providers/Context';
 
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-     <Context><RouterProvider router={router} /></Context>
+     <Context><QueryClientProvider client={queryClient}><RouterProvider router={router} /></QueryClientProvider></Context>
   </React.StrictMode>,
 )

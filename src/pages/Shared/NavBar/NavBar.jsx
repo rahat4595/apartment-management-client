@@ -24,7 +24,7 @@ const NavBar = () => {
             </NavLink>
             <NavLink
                 className={({ isActive }) => isActive ? 'text-lg font-semibold text-[#23BE0A] border px-1 rounded-md border-[#23BE0A]' : 'text-lg font-semibold'}
-                to="/allArts"
+                to="/apartment"
             >
                 Apartment
             </NavLink>

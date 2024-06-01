@@ -10,14 +10,15 @@ import { toast } from 'react-toastify';
 const Login = () => {
 
 
-    const { signIn, signInWithGoogle, githubLogin } = useContext(AuthContext);
+    const { signIn, signInWithGoogle,  } = useContext(AuthContext);
 
-    const [loginSuccess, setLoginSuccess] = useState('');
+    
     const [loginError, setLoginError] = useState('');
 
     const location = useLocation();
 
     const navigate = useNavigate()
+    const from = location.state?.from?.pathname || "/"
 
     const handleLogin = e => {
         e.preventDefault();
@@ -27,7 +28,6 @@ const Login = () => {
         const password = form.get('password')
         console.log(email, password);
 
-        setLoginSuccess('')
         setLoginError('')
 
         // login existing user
@@ -39,7 +39,7 @@ const Login = () => {
                 e.target.reset();
 
                 // After login go to clicked state otherwish go to home page
-                navigate(location?.state ? location.state : '/');
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.error(error);
@@ -55,11 +55,13 @@ const Login = () => {
                 console.log(result.user);
                 toast.success('Logged in Successfully!')
                 // After Google login go to clicked state otherwish go to home page
-                navigate(location?.state ? location.state : '/');
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.error(error);
             })
+
+           
     }
 
     //   github login
