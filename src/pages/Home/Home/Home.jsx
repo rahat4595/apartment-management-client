@@ -4,7 +4,9 @@ const Home = () => {
     return (
         <div>
         
-
+        <div className="max-w-7xl mx-auto">
+            <h2 className="text-4xl">Take a Look</h2>
+        </div>
            <div className="max-w-7xl mx-auto">
            <Banner></Banner>
            </div>
