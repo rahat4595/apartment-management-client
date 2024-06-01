@@ -7,7 +7,9 @@ import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import Apartment from "../pages/Apartment/Apartment";
-
+import Dashboard from "../Layout/Dashboard";
+import Profile from "../pages/Dashboard/Profile/Profile";
+import PrivateRoute from  "../Routes/PrivateRoute"
 
   export const router = createBrowserRouter([
     {
@@ -32,4 +34,14 @@ import Apartment from "../pages/Apartment/Apartment";
         }
       ]
     },
+    {
+      path:'/dashboard',
+      element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+      children: [
+        {
+          path:'apart',
+          element:<Profile></Profile>
+        }
+      ]
+    }
   ]);

@@ -5,19 +5,22 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import { toast } from 'react-toastify';
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 
 
 
 const SignUp = () => {
 
-    const { createUser, updateUserProfile, signInWithGoogle,  } = useContext(AuthContext);
+    const { createUser, updateUserProfile, signInWithGoogle, } = useContext(AuthContext);
 
     const [registerError, setRegisterError] = useState('');
     const [registerSuccess, setRegisterSuccess] = useState('');
     const [showPassword, setShowPassword] = useState(false);
-    
-    
+    const axiosPublic = useAxiosPublic();
+
+
 
     const navigate = useNavigate();
 
@@ -57,10 +60,22 @@ const SignUp = () => {
                 toast.success('You have Registerd successfully');
                 updateUserProfile(name, photoURL)
                     .then(() => {
-                        // Reseting the from field
-                        e.target.reset();
-                        // Go to home page 
-                        navigate('/');
+                        // create user entry in database
+                        const userInfo = {
+                            email: email,
+                            name: name,
+                        }
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log('user added to the database')
+                                    // Reseting the from field
+                                    e.target.reset();
+                                    // Go to home page 
+                                    navigate('/');
+                                }
+                            })
+
                     })
             })
             .catch(error => {
@@ -76,17 +91,28 @@ const SignUp = () => {
 
     // google login
 
-    const handleGoogleLogIn = () => {
-        signInWithGoogle()
-            .then(result => {
-                console.log(result.user);
-                toast.success('You have Registerd successfully');
-                navigate(location?.state ? location.state : '/');
-            })
-            .catch(error => {
-                console.error(error)
-            })
-    }
+    // const handleGoogleLogIn = () => {
+    //     signInWithGoogle()
+    //         .then(result => {
+    //             console.log(result.user);
+    //             toast.success('You have Registerd successfully');
+    //             const userInfo = {
+    //                 newEmail: result.user?.email,
+    //                 newName: result.user?.displayName
+
+    //             }
+    //             axiosPublic.post('/users', userInfo)
+    //             .then(res =>{
+    //                 console.log(res.data);
+    //                 navigate(location?.state ? location.state : '/');
+    //             })
+                
+                
+    //         })
+    //         .catch(error => {
+    //             console.error(error)
+    //         })
+    // }
 
     // github login
     // const handleGithubLogin = () => {
@@ -107,7 +133,7 @@ const SignUp = () => {
 
     return (
         <div className="max-w-7xl mx-auto">
-            
+
             <div className="md:pt-10 pt-8 pb-8 md:pb-10">
                 <img className="mx-auto md:w-[400px] w-[500px] rounded-3xl" alt="" />
             </div>
@@ -117,8 +143,9 @@ const SignUp = () => {
 
                 <label className="mr-1 ml-auto text-2xl text-orange-600 lg:text-2xl font-bold lg:font-semibold">Register with</label>
 
-                <button className="lg:mx-4 mx-2 h-8 w-8 rounded-full">
-                    <FcGoogle onClick={handleGoogleLogIn} size={30} className="flex -mb-1 justify-center items-center w-full" /></button>
+                {/* <button className="lg:mx-4 mx-2 h-8 w-8 rounded-full">
+                    <FcGoogle onClick={handleGoogleLogIn} size={30} className="flex -mb-1 justify-center items-center w-full" /></button> */}
+                    <SocialLogin></SocialLogin>
 
                 <button className="lg:mx-4 mx-2 h-8 w-8 rounded-full">
                     <FaGithub size={30} className="flex -mb-1 justify-center items-center w-full" /></button>

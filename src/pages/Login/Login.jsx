@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { toast } from 'react-toastify';
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 
 
@@ -49,20 +50,20 @@ const Login = () => {
     }
 
     
-    const handleGoogleLogin = () => {
-        signInWithGoogle()
-            .then(result => {
-                console.log(result.user);
-                toast.success('Logged in Successfully!')
-                // After Google login go to clicked state otherwish go to home page
-                navigate(from, { replace: true });
-            })
-            .catch(error => {
-                console.error(error);
-            })
+    // const handleGoogleLogin = () => {
+    //     signInWithGoogle()
+    //         .then(result => {
+    //             console.log(result.user);
+    //             toast.success('Logged in Successfully!')
+    //             // After Google login go to clicked state otherwish go to home page
+    //             navigate(from, { replace: true });
+    //         })
+    //         .catch(error => {
+    //             console.error(error);
+    //         })
 
            
-    }
+    // }
 
     //   github login
     // const handleGithubLogin = () => {
@@ -90,8 +91,9 @@ const Login = () => {
                     <i><h1 className="lg:text-3xl text-2xl text-red-800 font-bold md:mb-4 mb-2 lg:mb-6">Please Login Now!</h1></i>
                     <label className="mr-1 text-xl lg:text-2xl font-bold lg:font-semibold">Sign in with</label>
 
-                    <button className="lg:mx-4 mx-2 h-8 w-8 rounded-full">
-                        <FcGoogle onClick={handleGoogleLogin} size={30} className="flex -mb-1 justify-center items-center w-full" /></button>
+                    {/* <button className="lg:mx-4 mx-2 h-8 w-8 rounded-full">
+                        <FcGoogle onClick={handleGoogleLogin} size={30} className="flex -mb-1 justify-center items-center w-full" /></button> */}
+                        <SocialLogin></SocialLogin>
 
                     <button className="lg:mx-4 mx-2 h-8 w-8 rounded-full">
                         <FaGithub  size={30} className="flex -mb-1 justify-center items-center w-full" /></button>

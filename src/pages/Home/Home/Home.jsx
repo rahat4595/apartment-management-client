@@ -1,12 +1,18 @@
+import useCart from "../../../hooks/useCart";
 import Banner from "../Banner/Banner";
 
 const Home = () => {
+    const [apart] = useCart();
     return (
         <div>
         
-        <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl">Take a Look</h2>
-        </div>
+        <div className="max-w-7xl mx-auto mt-10">
+             
+                    <h2 className="text-4xl font-bold text-center ">Explore Apartments:{apart.length}</h2>
+                    <p className="text-center text-lg mt-10 px-5 lg:px-52">Explore your favourite arts and crafts categories and get yourself a inspiration to go beyond about artisticts</p>
+      
+            </div>
+
            <div className="max-w-7xl mx-auto">
            <Banner></Banner>
            </div>
