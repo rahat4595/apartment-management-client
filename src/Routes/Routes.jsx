@@ -11,6 +11,8 @@ import Dashboard from "../Layout/Dashboard";
 import Profile from "../pages/Dashboard/Profile/Profile";
 import PrivateRoute from  "../Routes/PrivateRoute"
 import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
+import AdminRoute from "./AdminRoute";
+import AdminProfile from "../pages/Dashboard/AdminProfile/AdminProfile";
 
   export const router = createBrowserRouter([
     {
@@ -39,14 +41,21 @@ import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
       path:'/dashboard',
       element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
-        {
-          path:'members',
-          element:<ManageUsers></ManageUsers>
-        },
+        // members Routes
         {
           path:'apart',
           element:<Profile></Profile>
-        }
+        },
+        // admins routes
+        {
+          path:'adminProfile',
+          element:<AdminRoute><AdminProfile></AdminProfile></AdminRoute>
+        },
+        {
+          path:'members',
+          element:<AdminRoute><ManageUsers></ManageUsers></AdminRoute>
+        },
+        
       ]
     }
   ]);

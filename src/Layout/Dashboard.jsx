@@ -2,8 +2,10 @@ import { FaEnvelope, FaHome, FaSearch } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 
+
 const Dashboard = () => {
-    const {isAdmin} = useAdmin();
+    const [isAdmin] = useAdmin();
+    
     return (
         
 
