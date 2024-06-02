@@ -2,11 +2,13 @@ import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/Context";
 import useAdmin from "../../../hooks/useAdmin";
+import useMember from "../../../hooks/useMember";
 
 const NavBar = () => {
     const { user, logOut } = useContext(AuthContext);
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [isAdmin] = useAdmin();
+    const [isMember] = useMember();
 
     const handleSignOut = () => {
         logOut()
@@ -72,10 +74,16 @@ const NavBar = () => {
                                         </Link>
                                     }
                                     {
-                                        user && !isAdmin && <Link to="/dashboard/apart" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                                        user && isMember && !isAdmin && <Link to="/dashboard/apart" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
                                             Dashboard
                                         </Link>
                                     }
+                                     {
+                                        user && !isMember && !isAdmin && <Link to="/dashboard/userProfile" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                                            Dashboard
+                                        </Link>
+                                    }
+
                                     <button
                                         onClick={handleSignOut}
                                         className="w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-200"

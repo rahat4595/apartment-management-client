@@ -32,6 +32,24 @@ const ManageUsers = () => {
     }
 
 
+    const handleMakeMember = user =>{
+        axiosSecure.patch(`/users/member/${user._id}`)
+        .then(res =>{
+            console.log(res.data)
+            if(res.data.modifiedCount > 0){
+                refetch();
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `${user.name} is a Member Now!`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+            }
+        })
+    }
+
+
 
     const handleDeleteUser = user => {
         Swal.fire({
@@ -75,6 +93,7 @@ const ManageUsers = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
+                            <th>Member</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -91,6 +110,12 @@ const ManageUsers = () => {
                                         <FaUsers className="text-white 
                                         text-2xl"></FaUsers>
                                     </button>}
+                                </td>
+                                <td>
+                                { user.role === 'member' ? 'Member' :
+                                    <button 
+                                 onClick={() => handleMakeMember(user)}
+                                className="btn">Make Member</button>}
                                 </td>
                                 <td>
                                     <button

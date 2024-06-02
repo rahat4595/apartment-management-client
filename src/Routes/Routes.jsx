@@ -13,6 +13,11 @@ import PrivateRoute from  "../Routes/PrivateRoute"
 import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
 import AdminRoute from "./AdminRoute";
 import AdminProfile from "../pages/Dashboard/AdminProfile/AdminProfile";
+import MemberRoute from "./MemberRoute";
+import UserProfile from "../pages/Dashboard/UserProfile/UserProfile";
+import MakeAnnounc from "../pages/Dashboard/MakeAnnounc/MakeAnnounc";
+import Announcements from "../pages/Dashboard/Announcements/Announcements";
+import UserAnnounce from "../pages/Dashboard/UserAnnounce/UserAnnounce";
 
   export const router = createBrowserRouter([
     {
@@ -44,7 +49,11 @@ import AdminProfile from "../pages/Dashboard/AdminProfile/AdminProfile";
         // members Routes
         {
           path:'apart',
-          element:<Profile></Profile>
+          element:<MemberRoute><Profile></Profile></MemberRoute>
+        },
+        {
+          path:'announcement',
+          element:<MemberRoute><Announcements></Announcements></MemberRoute>
         },
         // admins routes
         {
@@ -55,6 +64,19 @@ import AdminProfile from "../pages/Dashboard/AdminProfile/AdminProfile";
           path:'members',
           element:<AdminRoute><ManageUsers></ManageUsers></AdminRoute>
         },
+        {
+          path:'makeAnnoc',
+          element:<AdminRoute><MakeAnnounc></MakeAnnounc></AdminRoute>
+        },
+        // user routes
+        {
+          path:'userProfile',
+          element:<PrivateRoute><UserProfile></UserProfile></PrivateRoute>
+        },
+        {
+          path:'userAnnouc',
+          element:<UserAnnounce></UserAnnounce>
+        }
         
       ]
     }

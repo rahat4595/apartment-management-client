@@ -1,10 +1,12 @@
 import { FaEnvelope, FaHome, FaSearch } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
+import useMember from "../hooks/useMember";
 
 
 const Dashboard = () => {
     const [isAdmin] = useAdmin();
+    const [isMember] = useMember();
     
     return (
         
@@ -22,11 +24,17 @@ const Dashboard = () => {
                     <li><NavLink to='/dashboard/coupons'>Manage Coupons</NavLink></li>
                     </>
                     :
+                    isMember ?
                     <>
                      <li><NavLink to='/dashboard/apart'>My Profile</NavLink></li>
                     <li><NavLink to='/dashboard/payment'>Make Payment</NavLink></li>
                     <li><NavLink to='/dashboard/history'>Payment History</NavLink></li>
                     <li><NavLink to='/dashboard/announcement'>Announcements</NavLink></li>
+                    </>
+                    :
+                    <>
+                    <li><NavLink to='/dashboard/userProfile'>My Profile</NavLink></li>
+                    <li><NavLink to='/dashboard/userAnnouc'>Announcements</NavLink></li>
                     </>
                    }
 
