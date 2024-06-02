@@ -10,6 +10,7 @@ import Apartment from "../pages/Apartment/Apartment";
 import Dashboard from "../Layout/Dashboard";
 import Profile from "../pages/Dashboard/Profile/Profile";
 import PrivateRoute from  "../Routes/PrivateRoute"
+import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
 
   export const router = createBrowserRouter([
     {
@@ -38,6 +39,10 @@ import PrivateRoute from  "../Routes/PrivateRoute"
       path:'/dashboard',
       element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
+        {
+          path:'members',
+          element:<ManageUsers></ManageUsers>
+        },
         {
           path:'apart',
           element:<Profile></Profile>
