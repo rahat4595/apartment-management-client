@@ -18,6 +18,7 @@ import UserProfile from "../pages/Dashboard/UserProfile/UserProfile";
 import MakeAnnounc from "../pages/Dashboard/MakeAnnounc/MakeAnnounc";
 import Announcements from "../pages/Dashboard/Announcements/Announcements";
 import UserAnnounce from "../pages/Dashboard/UserAnnounce/UserAnnounce";
+import Requests from "../pages/Dashboard/Requests/Requests";
 
   export const router = createBrowserRouter([
     {
@@ -49,7 +50,7 @@ import UserAnnounce from "../pages/Dashboard/UserAnnounce/UserAnnounce";
         // members Routes
         {
           path:'apart',
-          element:<MemberRoute><Profile></Profile></MemberRoute>
+          element:<Profile></Profile>
         },
         {
           path:'announcement',
@@ -67,6 +68,10 @@ import UserAnnounce from "../pages/Dashboard/UserAnnounce/UserAnnounce";
         {
           path:'makeAnnoc',
           element:<AdminRoute><MakeAnnounc></MakeAnnounc></AdminRoute>
+        },
+        {
+          path:'reqts',
+          element:<Requests></Requests>
         },
         // user routes
         {

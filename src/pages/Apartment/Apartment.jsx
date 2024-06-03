@@ -18,7 +18,8 @@ const Apartment = () => {
     const handleAgreement = async (aggrement) => {
         if (user && user.email) {
             try {
-                const response = await axiosSecure.get('/aparts', {
+                // Correctly query the endpoint to check for existing agreements
+                const response = await axiosSecure.get('/aparts/email', {
                     params: { email: user.email }
                 });
 

@@ -29,7 +29,7 @@ const Profile = () => {
                             <p className="text-gray-800 font-semibold">Apartment No: {item.ApartmentNo}</p>
                             <span className="text-gray-800 font-semibold">Rent: ${item.Rent}</span>
                         </div>
-                        <p className="text-gray-800 font-semibold flex gap-3"><MdOutlineLocationOn className="mt-1" /> {item.reqDate}</p>
+                        <p className="text-gray-800 font-semibold flex gap-3"><MdOutlineLocationOn className="mt-1" /> {item.acceptDate}</p>
                         <p className="text-gray-800 font-semibold flex gap-3"><GrNotes className="mt-1" /> {item.FloorNo}</p>
 
                         <button  className="text-xl font-semibold px-5 py-2 bg-[#ff5a3c] text-white rounded-md mt-10 relative overflow-hidden group">
