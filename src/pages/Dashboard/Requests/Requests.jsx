@@ -18,35 +18,52 @@ const Requests = () => {
         }
     });
 
-        const handleAccept = async (item) => {
-            if (user && user.email) {
-                try {
-                    const res = await axiosSecure.put(`/aparts/${item._id}`, {
-                        status: "Checked",
-                        acceptDate: acceptDate,
-                    });
-                    if (res.data.modifiedCount > 0) {
-                        Swal.fire({
-                            position: "top-end",
-                            icon: "success",
-                            title: `Agreement accepted`,
-                            showConfirmButton: false,
-                            timer: 1500,
-                        });
-                        refetch();
-                    }
-                } catch (error) {
-                    console.error("Error accepting agreement:", error);
+    const handleMakeMember = user => {
+        axiosSecure.patch(`/users/member/${user._id}`)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.modifiedCount > 0) {
+                    refetch();
                     Swal.fire({
                         position: "top-end",
-                        icon: "error",
-                        title: `Failed to accept agreement`,
+                        icon: "success",
+                        title: `${user.name} is a Member Now!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
+    }
+
+    const handleAccept = async (item) => {
+        if (user && user.email) {
+            try {
+                const res = await axiosSecure.put(`/aparts/${item._id}`, {
+                    status: "Checked",
+                    acceptDate: acceptDate,
+                });
+                if (res.data.modifiedCount > 0) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: `Agreement accepted`,
                         showConfirmButton: false,
                         timer: 1500,
                     });
+                    refetch();
                 }
+            } catch (error) {
+                console.error("Error accepting agreement:", error);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: `Failed to accept agreement`,
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
             }
-        };
+        }
+    };
 
 
     return (

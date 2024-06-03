@@ -10,24 +10,24 @@ import img6 from '../../../assets/home/48.jpg';
 
 const Banner = () => {
     return (
-        <Carousel>
+        <Carousel infiniteLoop autoPlay interval={3000} showThumbs={false}>
             <div>
-                <img src={img1} />
+                <img src={img1} alt="Image 1" />
             </div>
             <div>
-                <img src={img2} />
+                <img src={img2} alt="Image 2" />
             </div>
             <div>
-                <img src={img3} />
+                <img src={img3} alt="Image 3" />
             </div>
             <div>
-                <img src={img4} />
+                <img src={img4} alt="Image 4" />
             </div>
             <div>
-                <img src={img5} />
+                <img src={img5} alt="Image 5" />
             </div>
             <div>
-                <img src={img6} />
+                <img src={img6} alt="Image 6" />
             </div>
         </Carousel>
     );
