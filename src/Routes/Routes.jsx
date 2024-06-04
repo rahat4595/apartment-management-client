@@ -22,6 +22,7 @@ import Requests from "../pages/Dashboard/Requests/Requests";
 import Payment from "../pages/Dashboard/Payment/Payment";
 
 import CheckoutPage from "../pages/Dashboard/Payment/CheckoutPage";
+import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 
   export const router = createBrowserRouter([
     {
@@ -53,11 +54,15 @@ import CheckoutPage from "../pages/Dashboard/Payment/CheckoutPage";
         // members Routes
         {
           path:'apart',
-          element:<Profile></Profile>
+          element:<MemberRoute><Profile></Profile></MemberRoute>
         },
         {
           path:'payment',
-          element:<Payment></Payment>
+          element:<MemberRoute><Payment></Payment></MemberRoute>
+        },
+        {
+          path:'history',
+          element:<PaymentHistory></PaymentHistory>
         },
         {
           path:'checkout',
