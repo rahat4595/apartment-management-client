@@ -19,6 +19,9 @@ import MakeAnnounc from "../pages/Dashboard/MakeAnnounc/MakeAnnounc";
 import Announcements from "../pages/Dashboard/Announcements/Announcements";
 import UserAnnounce from "../pages/Dashboard/UserAnnounce/UserAnnounce";
 import Requests from "../pages/Dashboard/Requests/Requests";
+import Payment from "../pages/Dashboard/Payment/Payment";
+
+import CheckoutPage from "../pages/Dashboard/Payment/CheckoutPage";
 
   export const router = createBrowserRouter([
     {
@@ -51,6 +54,14 @@ import Requests from "../pages/Dashboard/Requests/Requests";
         {
           path:'apart',
           element:<Profile></Profile>
+        },
+        {
+          path:'payment',
+          element:<Payment></Payment>
+        },
+        {
+          path:'checkout',
+          element:<CheckoutPage></CheckoutPage>
         },
         {
           path:'announcement',

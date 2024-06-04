@@ -18,6 +18,9 @@ const Requests = () => {
         }
     });
 
+
+    
+
     const handleMakeMember = user => {
         axiosSecure.patch(`/users/member/${user._id}`)
             .then(res => {
@@ -92,6 +95,7 @@ const Requests = () => {
                                 <span className="text-gray-800 font-semibold">Rent: ${item.Rent}</span>
                             </div>
                             <p className="text-gray-800 font-semibold flex gap-3">Request Date: {item.reqDate}</p>
+                            <p className="text-gray-800 font-semibold flex gap-3"> {item.status}</p>
                             <div className="flex gap-5">
                                 <button onClick={() => handleAccept(item)} className="text-xl font-semibold px-5 py-2 bg-[#23BE0A] text-white rounded-md mt-10 relative overflow-hidden group">
                                     <span className="absolute inset-0 bg-black transition-all duration-500 ease-out transform scale-x-0 origin-center group-hover:scale-x-100"></span>
