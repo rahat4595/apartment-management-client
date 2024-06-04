@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useCart from "../../../hooks/useCart";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 const CheckoutForm = () => {
@@ -15,7 +16,8 @@ const CheckoutForm = () => {
     const axiosSecure = useAxiosSecure();
     const {user} = useAuth();
     const [apart] = useCart();
-    const totalRent = apart.reduce((total, item) => total + item.Rent , 0)
+    const totalRent = apart.reduce((total, item) => total + item.Rent , 0);
+    const navigate = useNavigate();
 
     useEffect( () =>{
        if(totalRent > 0){
@@ -93,6 +95,7 @@ const CheckoutForm = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+                navigate('/dashboard/history')
                }
             }
         }
