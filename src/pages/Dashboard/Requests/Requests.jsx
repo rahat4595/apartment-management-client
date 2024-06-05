@@ -8,7 +8,7 @@ const Requests = () => {
 
     const { user } = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
-    const acceptDate = new Date().toISOString().slice(0, 10);
+    
 
     const { data: request = [], refetch } = useQuery({
         queryKey: ['aparts'],
@@ -21,35 +21,60 @@ const Requests = () => {
 
     
 
-    const handleMakeMember = user => {
-        axiosSecure.patch(`/users/member/${user._id}`)
-            .then(res => {
-                console.log(res.data)
-                if (res.data.modifiedCount > 0) {
-                    refetch();
-                    Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title: `${user.name} is a Member Now!`,
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                }
-            })
-    }
+  
 
     const handleAccept = async (item) => {
         if (user && user.email) {
             try {
+                const updateData = {
+                    apartId: item._id, // Pass the apartment ID
+                    userEmail: item.email, // Pass the user email
+                };
+                const res = await axiosSecure.put(`/updateStatusAndRole`, updateData);
+                if (res.status === 200) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: `Agreement accepted and user role updated`,
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                    refetch();
+                } else {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "warning",
+                        title: `Agreement accepted but failed to update user role`,
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                }
+            } catch (error) {
+                console.error("Error accepting agreement:", error);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: `Failed to accept agreement`,
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+            }
+        }
+    };
+
+
+    const handleReject = async (item) => {
+        if (user && user.email) {
+            try {
                 const res = await axiosSecure.put(`/aparts/${item._id}`, {
                     status: "Checked",
-                    acceptDate: acceptDate,
+                   
                 });
                 if (res.data.modifiedCount > 0) {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
-                        title: `Agreement accepted`,
+                        title: `Agreement rejected`,
                         showConfirmButton: false,
                         timer: 1500,
                     });
@@ -67,6 +92,7 @@ const Requests = () => {
             }
         }
     };
+    
 
 
     return (
@@ -101,7 +127,7 @@ const Requests = () => {
                                     <span className="absolute inset-0 bg-black transition-all duration-500 ease-out transform scale-x-0 origin-center group-hover:scale-x-100"></span>
                                     <span className="relative z-10">Accept</span>
                                 </button>
-                                <button className="text-xl font-semibold px-5 py-2 bg-[#ff5a3c] text-white rounded-md mt-10 relative overflow-hidden group">
+                                <button onClick={() => handleReject(item)} className="text-xl font-semibold px-5 py-2 bg-[#ff5a3c] text-white rounded-md mt-10 relative overflow-hidden group">
                                     <span className="absolute inset-0 bg-black transition-all duration-500 ease-out transform scale-x-0 origin-center group-hover:scale-x-100"></span>
                                     <span className="relative z-10">Reject</span>
                                 </button>
