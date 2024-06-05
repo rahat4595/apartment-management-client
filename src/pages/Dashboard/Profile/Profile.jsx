@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom";
 import useCart from "../../../hooks/useCart";
 import { GrNotes } from "react-icons/gr";
 
@@ -27,15 +28,20 @@ const Profile = () => {
                             </div>
                             <div className="flex justify-between mb-4">
                                 <p className="text-gray-800 font-semibold">Apartment No: {item.ApartmentNo}</p>
-                                <span className="text-gray-800 font-semibold">Rent: ${item.Rent}</span>
+                                <span className="text-gray-800 font-semibold flex gap-3">Floor No. {item.FloorNo}</span>
+                                
                             </div>
+                            <div className="flex justify-between mb-4">
                             <p className="text-gray-800 font-semibold flex gap-3"> Accepted Date: {item.acceptDate ? item.acceptDate : 'on checking'}</p>
-                            <p className="text-gray-800 font-semibold flex gap-3"><GrNotes className="mt-1" /> {item.FloorNo}</p>
+                            <span className="text-gray-800 font-semibold">Rent: ${item.Rent}</span>
+                            </div>
 
+                            <Link to='/dashboard/payment'>
                             <button className="text-xl font-semibold px-5 py-2 bg-[#ff5a3c] text-white rounded-md mt-10 relative overflow-hidden group">
                                 <span className="absolute inset-0 bg-black transition-all duration-500 ease-out transform scale-x-0 origin-center group-hover:scale-x-100"></span>
                                 <span className="relative z-10">Make Payment</span>
                             </button>
+                            </Link>
                         </div>
 
 

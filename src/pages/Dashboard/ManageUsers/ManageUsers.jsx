@@ -49,6 +49,23 @@ const ManageUsers = () => {
         })
     }
 
+    const handleMakeUser = user =>{
+        axiosSecure.patch(`/users/user/${user._id}`)
+        .then(res =>{
+            console.log(res.data)
+            if(res.data.modifiedCount > 0){
+                refetch();
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `${user.name} is a user Now!`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+            }
+        })
+    }
+
 
 
     const handleDeleteUser = user => {
@@ -119,7 +136,7 @@ const ManageUsers = () => {
                                 </td>
                                 <td>
                                     <button
-                                        onClick={() => handleDeleteUser(user)}
+                                        onClick={() => handleMakeUser(user)}
                                         className="btn btn-ghost btn-lg">
                                         <FaTrashAlt className="text-red-600"></FaTrashAlt>
                                     </button>
