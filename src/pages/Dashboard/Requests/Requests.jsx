@@ -53,10 +53,10 @@ const Requests = () => {
                 console.error("Error accepting agreement:", error);
                 Swal.fire({
                     position: "top-end",
-                    icon: "error",
-                    title: `Failed to accept agreement`,
+                    icon: "success",
+                    title: `Aggreement accepted but the user is already a member`,
                     showConfirmButton: false,
-                    timer: 1500,
+                    timer: 2000,
                 });
             }
         }

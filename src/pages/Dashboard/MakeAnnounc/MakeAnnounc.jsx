@@ -54,6 +54,7 @@ const MakeAnnounc = () => {
                         </div>
                         <textarea 
                         {...register('announcment', {required: true})}
+                        required
                         className="textarea textarea-bordered h-24"
                          placeholder="Announcment"></textarea>
                         

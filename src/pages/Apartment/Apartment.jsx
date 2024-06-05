@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import useApart from "../../hooks/useApart";
 import { AuthContext } from "../../providers/Context";
 import Swal from "sweetalert2";
@@ -15,10 +15,12 @@ const Apartment = () => {
     const [, refetch] = useCart();
     const reqDate = new Date().toISOString().slice(0, 10);
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 6;
+
     const handleAgreement = async (aggrement) => {
         if (user && user.email) {
             try {
-                // Correctly query the endpoint to check for existing agreements
                 const response = await axiosSecure.get('/aparts/email', {
                     params: { email: user.email }
                 });
@@ -89,11 +91,18 @@ const Apartment = () => {
         }
     };
 
+    const totalPages = Math.ceil(apartments.length / itemsPerPage);
+
+    const currentApartments = apartments.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+    );
+
     return (
         <div className="max-w-7xl mx-auto p-4">
             <h2 className="text-2xl font-bold mb-4">Available Apartments</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {apartments.map((apartment) => (
+                {currentApartments.map((apartment) => (
                     <div key={apartment._id} className="card w-full bg-base-100 shadow-xl">
                         <figure><img className="duration-300 hover:scale-105" src={apartment.apartmentImage} alt="Apartment" /></figure>
                         <div className="card-body">
@@ -113,6 +122,19 @@ const Apartment = () => {
                             </div>
                         </div>
                     </div>
+                ))}
+            </div>
+            <div className="flex justify-center mt-4">
+                {Array.from({ length: totalPages }, (_, index) => (
+                    <button
+                        key={index + 1}
+                        onClick={() => setCurrentPage(index + 1)}
+                        className={`px-4 py-2 mx-1 border rounded ${
+                            currentPage === index + 1 ? "bg-gray-700 text-white" : "bg-white text-gray-700"
+                        }`}
+                    >
+                        {index + 1}
+                    </button>
                 ))}
             </div>
         </div>

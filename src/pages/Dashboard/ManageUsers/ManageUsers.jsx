@@ -1,69 +1,69 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { FaTrashAlt, FaUsers } from "react-icons/fa";
+import {  FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 
 const ManageUsers = () => {
     const axiosSecure = useAxiosSecure();
-    const {data : users = [], refetch} = useQuery({
+    const { data: users = [], refetch } = useQuery({
         queryKey: ['users',],
-        queryFn: async () =>{
+        queryFn: async () => {
             const res = await axiosSecure.get('/users');
             return res.data
         }
     })
 
-    const handleMakeAdmin = user =>{
+    const handleMakeAdmin = user => {
         axiosSecure.patch(`/users/admin/${user._id}`)
-        .then(res =>{
-            console.log(res.data)
-            if(res.data.modifiedCount > 0){
-                refetch();
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: `${user.name} is an Admin Now!`,
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-            }
-        })
+            .then(res => {
+                console.log(res.data)
+                if (res.data.modifiedCount > 0) {
+                    refetch();
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: `${user.name} is an Admin Now!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
     }
 
 
-    const handleMakeMember = user =>{
+    const handleMakeMember = user => {
         axiosSecure.patch(`/users/member/${user._id}`)
-        .then(res =>{
-            console.log(res.data)
-            if(res.data.modifiedCount > 0){
-                refetch();
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: `${user.name} is a Member Now!`,
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-            }
-        })
+            .then(res => {
+                console.log(res.data)
+                if (res.data.modifiedCount > 0) {
+                    refetch();
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: `${user.name} is a Member Now!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
     }
 
-    const handleMakeUser = user =>{
+    const handleMakeUser = user => {
         axiosSecure.patch(`/users/user/${user._id}`)
-        .then(res =>{
-            console.log(res.data)
-            if(res.data.modifiedCount > 0){
-                refetch();
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: `${user.name} is a user Now!`,
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-            }
-        })
+            .then(res => {
+                console.log(res.data)
+                if (res.data.modifiedCount > 0) {
+                    refetch();
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: `${user.name} is a user Now!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
     }
 
 
@@ -121,7 +121,7 @@ const ManageUsers = () => {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>
-                                     { user.role === 'admin' ? 'Admin' :  <button
+                                    {user.role === 'admin' ? 'Admin' : <button
                                         onClick={() => handleMakeAdmin(user)}
                                         className="btn btn-lg bg-orange-500">
                                         <FaUsers className="text-white 
@@ -129,17 +129,20 @@ const ManageUsers = () => {
                                     </button>}
                                 </td>
                                 <td>
-                                { user.role === 'member' ? 'Member' :
-                                    <button 
-                                 onClick={() => handleMakeMember(user)}
-                                className="btn">Make Member</button>}
+                                    {user.role === 'member' ? 'Member' :
+                                        <button
+                                            onClick={() => handleMakeMember(user)}
+                                            className="btn">Make Member</button>}
                                 </td>
                                 <td>
-                                    <button
-                                        onClick={() => handleMakeUser(user)}
-                                        className="btn btn-ghost btn-lg">
-                                        <FaTrashAlt className="text-red-600"></FaTrashAlt>
-                                    </button>
+                                    {user.role === ' ' ? 'User' :
+                                        <button
+                                            onClick={() => handleMakeUser(user)}
+                                            className="btn">
+                                            Remove
+                                        </button>
+
+                                    }
                                 </td>
                             </tr>)
                         }

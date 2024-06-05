@@ -90,6 +90,7 @@ const Payment = () => {
                             </label>
                             <select
                                 {...register(`month_${index}`, { required: true })}
+                                required
                                 className="input input-bordered w-full">
                                 <option value="">Select Month</option>
                                 <option value="January">January</option>

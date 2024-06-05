@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom";
 import useCart from "../../../hooks/useCart";
-import { GrNotes } from "react-icons/gr";
+
 
 const Profile = () => {
     const [apart] = useCart();
