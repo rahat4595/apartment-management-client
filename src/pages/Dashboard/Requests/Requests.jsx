@@ -27,8 +27,8 @@ const Requests = () => {
         if (user && user.email) {
             try {
                 const updateData = {
-                    apartId: item._id, // Pass the apartment ID
-                    userEmail: item.email, // Pass the user email
+                    apartId: item._id, // Passing the apartment ID
+                    userEmail: item.email, // Passing the user email
                 };
                 const res = await axiosSecure.put(`/updateStatusAndRole`, updateData);
                 if (res.status === 200) {

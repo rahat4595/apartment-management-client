@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { FaUser, FaUsers } from "react-icons/fa";
+import { PieChart, Pie, Cell, Legend, Tooltip } from "recharts";
 
 const AdminProfile = () => {
     const { user } = useAuth();
@@ -15,6 +16,21 @@ const AdminProfile = () => {
         }
     });
 
+    const totalRooms = stats.totalRooms || 0;
+    const availableRooms = stats.availableRooms || 0;
+    const unavailableRooms = stats.unavailableRooms || 0;
+
+
+    const availablePercentage = totalRooms ? ((availableRooms / totalRooms) * 100).toFixed(2) : 0;
+    const unavailablePercentage = totalRooms ? ((unavailableRooms / totalRooms) * 100).toFixed(2) : 0;
+
+    const roomData = [
+        { name: 'Available Rooms', value: availableRooms },
+        { name: 'Unavailable Rooms', value: unavailableRooms }
+    ];
+
+    const COLORS = ['#0088FE', '#FFBB28'];
+
     return (
         <div>
             <h2 className="text-3xl">
@@ -25,7 +41,7 @@ const AdminProfile = () => {
             <div className="stats shadow mt-5">
                 <div className="stat">
                     <div className="stat-figure text-secondary">
-                        <FaUser />
+                        <FaUser className="text-3xl" />
                     </div>
                     <div className="stat-title">Users</div>
                     <div className="stat-value">{stats.users}</div>
@@ -34,15 +50,47 @@ const AdminProfile = () => {
 
                 <div className="stat">
                     <div className="stat-figure text-secondary">
-                        <FaUsers />
+                        <FaUsers className="text-3xl"/>
                     </div>
                     <div className="stat-title">Members</div>
                     <div className="stat-value">{stats.members}</div>
                     <div className="stat-desc">Total registered members</div>
                 </div>
-
-                
+                <div className="stat">
+                    <div className="stat-figure text-secondary">
+                        <FaUsers className="text-3xl"/>
+                    </div>
+                    <div className="stat-title">Rooms</div>
+                    <div className="stat-value">{stats.totalRooms}</div>
+                    <div className="stat-desc">Total Number of Rooms</div>
+                </div>
             </div>
+
+            <div className="mt-8">
+                <h3 className="text-xl">Room Availability</h3>
+                <PieChart width={400} height={300}>
+                    <Pie
+                        data={roomData}
+                        cx={200}
+                        cy={150}
+                        labelLine={false}
+                        outerRadius={120}
+                        fill="#8884d8"
+                        dataKey="value"
+                    >
+                        {roomData.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                        ))}
+                    </Pie>
+                    <Tooltip />
+                    <Legend />
+                </PieChart>
+            </div>
+
+            <div className="text-center mt-4">
+                    <p className="text-lg">Available Rooms: {availablePercentage}%</p>
+                    <p className="text-lg">Unavailable Rooms: {unavailablePercentage}%</p>
+                </div>
         </div>
     );
 };
