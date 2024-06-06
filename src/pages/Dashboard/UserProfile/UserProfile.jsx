@@ -1,10 +1,10 @@
-import useAuth from "../../../hooks/useAuth";
+
 import useCart from "../../../hooks/useCart";
 import { FaEnvelope } from "react-icons/fa";
 
 const UserProfile = () => {
     const [apart] = useCart();
-    const {user} = useAuth();
+    
     return (
         <div>
          
@@ -25,6 +25,9 @@ const UserProfile = () => {
                                 <span className="text-black">{item.email}</span>
                             </span>
 
+                        </div>
+                        <div>
+                            <p className="text-black">Only members can see there apartment info. </p>
                         </div>
                     </div>
                 </div>

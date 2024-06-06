@@ -73,7 +73,7 @@ const Payment = () => {
 
                         <div className="form-control md:w-1/2 mb-4">
                             <label className="label">
-                                <span className="label-text">Rent</span>
+                                <span className="label-text">Rent ( $ )</span>
                             </label>
                             <input
                                 type="text"
