@@ -23,6 +23,7 @@ import Payment from "../pages/Dashboard/Payment/Payment";
 
 import CheckoutPage from "../pages/Dashboard/Payment/CheckoutPage";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
+import Coupon from "../pages/Dashboard/Coupon/Coupon";
 
   export const router = createBrowserRouter([
     {
@@ -88,6 +89,10 @@ import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
         {
           path:'reqts',
           element:<Requests></Requests>
+        },
+        {
+          path:'coupons',
+          element:<Coupon></Coupon>
         },
         // user routes
         {
