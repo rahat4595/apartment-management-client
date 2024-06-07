@@ -4,9 +4,9 @@ const useApart = () => {
     const [apartments, setApartments] = useState([]);
 
     useEffect(() => {
-        // Fetch or generate apartment data here
+        
         const fetchApartments = async () => {
-            const response = await fetch("http://localhost:5000/apartment"); // Replace with your API endpoint
+            const response = await fetch("http://localhost:5000/apartment"); 
             const data = await response.json();
             setApartments(data);
         };
