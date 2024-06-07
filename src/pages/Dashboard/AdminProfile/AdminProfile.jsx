@@ -38,7 +38,7 @@ const AdminProfile = () => {
                 {user?.displayName ? user.displayName : 'Back'}
             </h2>
 
-            <div className="flex gap-5 mt-5">
+            <div className="flex gap-5 mt-5 flex-col lg:flex-row ">
             <div  className="max-w-md p-8 sm:flex sm:space-x-6 bg-gray-200 text-gray-100">
                     <div className="flex-shrink-0 w-full mb-6 h-44 sm:h-32 sm:w-32 sm:mb-0">
                         <img src={user.photoURL} alt="" className="object-cover object-center w-full h-full rounded bg-gray-400" />
