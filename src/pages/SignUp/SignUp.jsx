@@ -1,8 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/Context";
 import { useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
+
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import { toast } from 'react-toastify';
 import useAxiosPublic from "../../hooks/useAxiosPublic";
@@ -145,10 +144,11 @@ const SignUp = () => {
 
                 {/* <button className="lg:mx-4 mx-2 h-8 w-8 rounded-full">
                     <FcGoogle onClick={handleGoogleLogIn} size={30} className="flex -mb-1 justify-center items-center w-full" /></button> */}
+                    <div className="mt-5">
                     <SocialLogin></SocialLogin>
+                    </div>
 
-                <button className="lg:mx-4 mx-2 h-8 w-8 rounded-full">
-                    <FaGithub size={30} className="flex -mb-1 justify-center items-center w-full" /></button>
+               
             </div>
 
             <div className="my-8 flex md:w-3/4 mx-auto  text-center border-b-2 border-dashed border-y-2 border-slate-300">

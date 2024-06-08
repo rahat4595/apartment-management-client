@@ -1,27 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../../providers/Context";
 import Swal from "sweetalert2";
 
 const Requests = () => {
-
     const { user } = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
-    
+    const [requestList, setRequestList] = useState([]);
 
     const { data: request = [], refetch } = useQuery({
         queryKey: ['aparts'],
         queryFn: async () => {
             const res = await axiosSecure.get('/aparts');
+            setRequestList(res.data); // Set initial request list state
             return res.data;
         }
     });
-
-
-    
-
-  
 
     const handleAccept = async (item) => {
         if (user && user.email) {
@@ -39,7 +34,8 @@ const Requests = () => {
                         showConfirmButton: false,
                         timer: 1500,
                     });
-                    refetch();
+                    // Remove the accepted item from the request list
+                    setRequestList(prev => prev.filter(req => req._id !== item._id));
                 } else {
                     Swal.fire({
                         position: "top-end",
@@ -54,7 +50,7 @@ const Requests = () => {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: `Aggreement accepted but the user is already a member`,
+                    title: `Agreement accepted but the user is already a member`,
                     showConfirmButton: false,
                     timer: 2000,
                 });
@@ -62,13 +58,11 @@ const Requests = () => {
         }
     };
 
-
     const handleReject = async (item) => {
         if (user && user.email) {
             try {
                 const res = await axiosSecure.put(`/aparts/${item._id}`, {
                     status: "Checked",
-                   
                 });
                 if (res.data.modifiedCount > 0) {
                     Swal.fire({
@@ -78,28 +72,27 @@ const Requests = () => {
                         showConfirmButton: false,
                         timer: 1500,
                     });
-                    refetch();
+                    // Remove the rejected item from the request list
+                    setRequestList(prev => prev.filter(req => req._id !== item._id));
                 }
             } catch (error) {
-                console.error("Error accepting agreement:", error);
+                console.error("Error rejecting agreement:", error);
                 Swal.fire({
                     position: "top-end",
                     icon: "error",
-                    title: `Failed to accept agreement`,
+                    title: `Failed to reject agreement`,
                     showConfirmButton: false,
                     timer: 1500,
                 });
             }
         }
     };
-    
-
 
     return (
         <div>
-            <div><h2>Agreement Requests: {request.length}</h2></div>
+            <div><h2>Agreement Requests: {requestList.length}</h2></div>
             <div className="md:mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 p-5">
-                {request.map((item) => (
+                {requestList.map((item) => (
                     <div key={item._id} className="card w-full bg-base-100 shadow-xl mb-4">
                         <figure>
                             <img className="duration-300 hover:scale-105" src={item.photo} alt="Apartment" />
@@ -141,47 +134,3 @@ const Requests = () => {
 };
 
 export default Requests;
-
-
-
-
-
-
-
-
-//  // Get all apartments
-//  app.get('/aparts', async (req, res) => {
-//     const result = await apartmentCollection.find().toArray();
-//     res.send(result);
-//   });
-
-
-//   // Update the status of an agreement
-//   app.put('/aparts/:id', async (req, res) => {
-//     const id = req.params.id;
-//     const { status, acceptDate } = req.body;
-
-//     const filter = { _id: new ObjectId(id) };
-//     const updateDoc = {
-//       $set: {
-//         status: status,
-//         acceptDate: acceptDate,
-//       },
-//     };
-
-//     const result = await apartmentCollection.updateOne(filter, updateDoc);
-//     res.send(result);
-//   });
-
-
-
-
-
-
-
-
-
-
-
-
-

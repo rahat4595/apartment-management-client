@@ -1,8 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/Context";
 import { useLocation, useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
+
 import { toast } from 'react-toastify';
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
@@ -93,10 +92,11 @@ const Login = () => {
 
                     {/* <button className="lg:mx-4 mx-2 h-8 w-8 rounded-full">
                         <FcGoogle onClick={handleGoogleLogin} size={30} className="flex -mb-1 justify-center items-center w-full" /></button> */}
+                        <div className="mt-5">
                         <SocialLogin></SocialLogin>
+                        </div>
 
-                    <button className="lg:mx-4 mx-2 h-8 w-8 rounded-full">
-                        <FaGithub  size={30} className="flex -mb-1 justify-center items-center w-full" /></button>
+                    
                 </div>
 
                 <div className="my-8 flex text-center border-b-2 border-dashed border-y-2 border-slate-300">
