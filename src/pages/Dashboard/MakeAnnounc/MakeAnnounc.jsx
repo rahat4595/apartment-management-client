@@ -29,7 +29,7 @@ const MakeAnnounc = () => {
     }
     return (
         <div>
-            <h2 className="text-4xl">Make an Announcement</h2>
+            <h2 className="text-4xl max-w-7xl mx-auto">Make an Announcement</h2>
 
             <div className="max-w-7xl mx-auto">
                 <form onSubmit={handleSubmit(onSubmit)}>

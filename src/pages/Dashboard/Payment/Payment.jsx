@@ -113,7 +113,7 @@ const Payment = () => {
                 <input
                     type="submit"
                     value="Pay"
-                    className="bg-black text-white p-4 rounded-xl btn-block cursor-pointer"
+                    className="bg-black text-white p-4 rounded-xl btn w-2/4 cursor-pointer"
                 />
             </form>
         </div>

@@ -1,7 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { FaEnvelope, FaUser, FaUsers } from "react-icons/fa";
+import { LuUser2 } from "react-icons/lu";
+import { HiOutlineUsers } from "react-icons/hi2";
+import { BsHouse } from "react-icons/bs";
+import { FaEnvelope} from "react-icons/fa";
 import { PieChart, Pie, Cell, Legend, Tooltip } from "recharts";
 
 const AdminProfile = () => {
@@ -63,8 +66,8 @@ const AdminProfile = () => {
 
             <div className="stats shadow mt-5">
                 <div className="stat">
-                    <div className="stat-figure text-secondary">
-                        <FaUser className="text-3xl" />
+                    <div className="stat-figure">
+                    <LuUser2 className="text-3xl"/>
                     </div>
                     <div className="stat-title">Users</div>
                     <div className="stat-value">{stats.users}</div>
@@ -72,16 +75,17 @@ const AdminProfile = () => {
                 </div>
 
                 <div className="stat">
-                    <div className="stat-figure text-secondary">
-                        <FaUsers className="text-3xl"/>
+                    <div className="stat-figure">
+                    <HiOutlineUsers className="text-3xl"/>
+
                     </div>
                     <div className="stat-title">Members</div>
                     <div className="stat-value">{stats.members}</div>
                     <div className="stat-desc">Total registered members</div>
                 </div>
                 <div className="stat">
-                    <div className="stat-figure text-secondary">
-                        <FaUsers className="text-3xl"/>
+                    <div className="stat-figure">
+                    <BsHouse className="text-3xl"/>
                     </div>
                     <div className="stat-title">Rooms</div>
                     <div className="stat-value">{stats.totalRooms}</div>
