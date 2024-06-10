@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-
+import 'animate.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import '../../../../node_modules/swiper/swiper-bundle.min.css';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import Swal from "sweetalert2";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-
+import Aos from "aos";
+import 'aos/dist/aos.css'
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import Banner from "../Banner/Banner";
 
@@ -14,6 +15,10 @@ const Home = () => {
     
     const axiosPublic = useAxiosPublic();
     const [coupons, setCoupons] = useState([]);
+
+    useEffect(() => {
+        Aos.init({ duration: 2000 })
+    }, [])
 
     useEffect(() => {
         // Fetch coupons from the server
@@ -51,14 +56,14 @@ const Home = () => {
 
     return (
         <div>
-            <div className="max-w-7xl mx-auto mt-10 px-4">
+            <div className="max-w-7xl mx-auto mt-10 px-4 animate__animated animate__bounceIn">
                 <h2 className="text-4xl font-bold text-center">Explore Apartments</h2>
                 <p className="text-center text-lg my-10 px-5 lg:px-52">
                 Discover your ideal apartment and find inspiration for your next move. Explore a variety of apartments and get inspired to elevate your living experience.
                 </p>
             </div>
 
-            <div className="max-w-7xl mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-4 animate__animated animate__slideInLeft">
                 <Banner />
             </div>
 
@@ -96,12 +101,14 @@ const Home = () => {
                 </div>
             </section>
 
-            <section className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-24 lg:px-8">
+            <section className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-24 lg:px-8 ">
+                <div className="animate__animated animate__zoomIn">
                 <h2 className="text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl text-center mb-10">Available Coupons</h2>
                 <p className="text-center text-lg my-10 px-5 lg:px-52">
                     Get the coupons now before they expire and get your desired discount on our apartments.
                 </p>
-                <div className="flex justify-center">
+                </div>
+                <div className="flex justify-center" data-aos="zoom-in">
                     <Swiper
                         modules={[Navigation, Pagination, Scrollbar, A11y]}
                         spaceBetween={30}

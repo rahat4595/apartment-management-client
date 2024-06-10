@@ -1,4 +1,4 @@
-import { FaEnvelope, FaHome, FaSearch } from "react-icons/fa";
+import {  FaHome, FaSearch } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useMember from "../hooks/useMember";
@@ -51,11 +51,7 @@ const Dashboard = () => {
                             <FaSearch></FaSearch>
                             Apartment</NavLink>
                     </li>
-                    <li>
-                        <NavLink to="/order/contact">
-                            <FaEnvelope></FaEnvelope>
-                            Contact</NavLink>
-                    </li>
+                
                 </ul>
             </div>
 

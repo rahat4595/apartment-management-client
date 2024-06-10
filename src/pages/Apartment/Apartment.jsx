@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useCart from "../../hooks/useCart";
+import 'animate.css';
 
 const Apartment = () => {
     const [apartments] = useApart();
@@ -17,6 +18,7 @@ const Apartment = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
+
 
     const handleAgreement = async (aggrement) => {
         if (user && user.email) {
@@ -101,7 +103,7 @@ const Apartment = () => {
     return (
         <div className="max-w-7xl mx-auto p-4">
             <h2 className="text-2xl font-bold mb-4">Available Apartments</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate__animated animate__zoomIn">
                 {currentApartments.map((apartment) => (
                     <div key={apartment._id} className="card w-full bg-base-100 shadow-xl">
                         <figure><img className="duration-300 hover:scale-105" src={apartment.apartmentImage} alt="Apartment" /></figure>
