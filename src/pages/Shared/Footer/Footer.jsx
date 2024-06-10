@@ -6,25 +6,25 @@ const Footer = () => {
                 <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
                     <div className="lg:w-1/3 ">
                         <a rel="noopener noreferrer" href="#" className="flex justify-center space-x-3 lg:justify-start">
-                            
-                        <div> <img className="w-[100px] h-[100px] object-contain" src="https://i.ibb.co/ww2q3gf/Blue-Modern-Building-Corp-Logo-removebg-preview.png" alt="" /></div>
+
+                            <div> <img className="w-[100px] h-[100px] object-contain" src="https://i.ibb.co/ww2q3gf/Blue-Modern-Building-Corp-Logo-removebg-preview.png" alt="" /></div>
                         </a>
                     </div>
                     <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
                         <div className="space-y-3">
-                            <h3 className="tracking-wide uppercase text-gray-50">Donate Food</h3>
+                            <h3 className="tracking-wide uppercase text-gray-50">Rent Apartments</h3>
                             <ul className="space-y-1">
                                 <li>
-                                    <a rel="noopener noreferrer" href="#">Ways to Give</a>
+                                    <a rel="noopener noreferrer" href="#">Available Listings</a>
                                 </li>
                                 <li>
-                                    <a rel="noopener noreferrer" href="#">Partnerships</a>
+                                    <a rel="noopener noreferrer" href="#">How to Apply</a>
                                 </li>
                                 <li>
-                                    <a rel="noopener noreferrer" href="#">Donate Now</a>
+                                    <a rel="noopener noreferrer" href="#">Tenant Services</a>
                                 </li>
                                 <li>
-                                    <a rel="noopener noreferrer" href="#">Resources</a>
+                                    <a rel="noopener noreferrer" href="#">FAQs</a>
                                 </li>
                             </ul>
                         </div>
@@ -32,27 +32,31 @@ const Footer = () => {
                             <h3 className="tracking-wide uppercase text-gray-50">Company</h3>
                             <ul className="space-y-1">
                                 <li>
-                                    <a rel="noopener noreferrer" href="#">Share Serve</a>
+                                    <a rel="noopener noreferrer" href="#">About Us</a>
                                 </li>
                                 <li>
-                                    <a rel="noopener noreferrer" href="#">Feed unity</a>
+                                    <a rel="noopener noreferrer" href="#">Careers</a>
+                                </li>
+                                <li>
+                                    <a rel="noopener noreferrer" href="#">Contact Us</a>
                                 </li>
                             </ul>
                         </div>
                         <div className="space-y-3">
-                            <h3 className="uppercase text-gray-50">Donators</h3>
+                            <h3 className="uppercase text-gray-50">Residents</h3>
                             <ul className="space-y-1">
                                 <li>
-                                    <a rel="noopener noreferrer" href="#">Public</a>
+                                    <a rel="noopener noreferrer" href="#">Resident Portal</a>
                                 </li>
                                 <li>
-                                    <a rel="noopener noreferrer" href="#">NGO</a>
+                                    <a rel="noopener noreferrer" href="#">Maintenance Requests</a>
                                 </li>
                                 <li>
-                                    <a rel="noopener noreferrer" href="#">Guides</a>
+                                    <a rel="noopener noreferrer" href="#">Community Events</a>
                                 </li>
                             </ul>
                         </div>
+
                         <div className="space-y-3">
                             <div className="uppercase text-gray-50">Social media</div>
                             <div className="flex justify-start space-x-3">
@@ -75,7 +79,7 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className="py-6 text-sm text-center text-gray-400">© 2024 FoodShare Co. All rights reserved.</div>
+                <div className="py-6 text-sm text-center text-gray-400">© 2024 RentWise Co. All rights reserved.</div>
             </footer>
         </div>
     );
