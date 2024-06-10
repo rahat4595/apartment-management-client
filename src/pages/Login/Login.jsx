@@ -3,6 +3,8 @@ import { AuthContext } from "../../providers/Context";
 import { useLocation, useNavigate } from "react-router-dom";
 import 'animate.css';
 import { toast } from 'react-toastify';
+import Lottie from "lottie-react";
+import login from "../../assets/login.json"
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 
@@ -83,7 +85,7 @@ const Login = () => {
         <section className="flex flex-col md:flex-row justify-center md:space-x-24 items-center my-2 mx-5  md:mx-0 md:my-14 animate__animated animate__zoomIn">
            
             <div className="lg:w-1/3 md:w-80 hidden md:block lg:block w-72 max-w-sm text-center md:mt-9">
-                <img src="https://i.ibb.co/44WLfYh/mobile-login-concept-illustration-114360-83.jpg" alt="" />
+            <Lottie animationData={login}></Lottie>
             </div>
             <div className="md:w-1/3 max-w-sm text-center md:mt-9">
                 <div>

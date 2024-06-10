@@ -90,7 +90,7 @@ const Requests = () => {
 
     return (
         <div>
-            <div><h2>Agreement Requests: {requestList.length}</h2></div>
+            <div><h2 className="text-6xl">Agreement Requests: {requestList.length}</h2></div>
             <div className="md:mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 p-5">
                 {requestList.map((item) => (
                     <div key={item._id} className="card w-full bg-base-100 shadow-xl mb-4">
