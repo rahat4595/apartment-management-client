@@ -49,7 +49,7 @@ const NavBar = () => {
                             {links}
                         </ul>
                     </div>
-                    <h1 className="text-md lg:text-2xl font-bold">Rent Wise</h1>
+                    <div> <img className="w-[100px] h-[100px] object-contain" src="https://i.ibb.co/ww2q3gf/Blue-Modern-Building-Corp-Logo-removebg-preview.png" alt="" /></div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu flex gap-5 menu-horizontal px-5">
@@ -97,7 +97,7 @@ const NavBar = () => {
                     {!user && (
                         <div className="flex gap-4">
                             <Link to="/login">
-                                <button className="btn bg-[#23BE0A] text-white">Login</button>
+                                <button className="btn bg-[#ff5a3c] text-white">Login</button>
                             </Link>
                         </div>
                     )}
