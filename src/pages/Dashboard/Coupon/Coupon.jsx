@@ -2,6 +2,7 @@ import  { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 const Coupon = () => {
     const { register, handleSubmit, reset, setValue } = useForm();
@@ -10,6 +11,7 @@ const Coupon = () => {
     const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
     const [currentCoupon, setCurrentCoupon] = useState(null);
     const axiosSecure = useAxiosSecure();
+    const axiosPublic = useAxiosPublic();
 
     useEffect(() => {
         fetchCoupons();
@@ -17,7 +19,7 @@ const Coupon = () => {
 
     const fetchCoupons = async () => {
         try {
-            const response = await axiosSecure.get('/coupons');
+            const response = await axiosPublic.get('/coupons');
             setCoupons(response.data);
         } catch (error) {
             console.error('Error fetching coupons:', error);

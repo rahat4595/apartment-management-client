@@ -66,7 +66,7 @@ const PaymentHistory = () => {
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Email</th>
+                            <th>Rent</th>
                             <th>Transaction Id</th>
                             <th>Date</th>
                         </tr>

@@ -7,7 +7,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useCart from "../../hooks/useCart";
 
 const Apartment = () => {
-    const apartments = useApart();
+    const [apartments] = useApart();
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();

@@ -1,20 +1,21 @@
-import { useState, useEffect } from "react";
+
+import useAxiosPublic from "./useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 const useApart = () => {
-    const [apartments, setApartments] = useState([]);
+    // const [apartments, setApartments] = useState([]);
+    const axiosPublic = useAxiosPublic();
 
-    useEffect(() => {
-        
-        const fetchApartments = async () => {
-            const response = await fetch("http://localhost:5000/apartment"); 
-            const data = await response.json();
-            setApartments(data);
-        };
+    
+    const {refetch, data: apartment=[]} = useQuery({
+        queryKey:['apart'],
+        queryFn: async() =>{
+            const res = await axiosPublic.get(`/apartment`)
+            return res.data
+        }
+    });
+    return [apartment, refetch]
 
-        fetchApartments();
-    }, []);
-
-    return apartments;
 };
 
 export default useApart;
@@ -36,7 +37,7 @@ export default useApart;
 
 //     const axiosPublic = useAxiosPublic();
 //     // useEffect(() => {
-//     //     fetch('http://localhost:5000/apartment')
+//     //     fetch('https://building-management-server-one.vercel.app/apartment')
 //     //         .then(res => res.json())
 //     //         .then(data => {
 //     //             setApartment(data);
