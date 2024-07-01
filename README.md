@@ -2,10 +2,6 @@
 
 Rent Wise simplifies apartment rentals by providing an easy-to-use platform for browsing listings, submitting agreements, and making payments. Users can enjoy special features with membership approval, apply discount coupons, and manage their rentals efficiently.
 
-**Admin Email:** rahat@gmail.com 
-
-**Admin Password:** 123456Li
-
 
 **Firebase Live Site:** [Rent Wise](https://building-management-73b1d.web.app)
 
