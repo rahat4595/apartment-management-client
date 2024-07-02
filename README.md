@@ -31,3 +31,8 @@ Rent Wise simplifies apartment rentals by providing an easy-to-use platform for 
 - **Location:** Someone can easily find us through the location in the map provided by us.
 
 - **Profile Management:** Users can see and manage there information like photo email name.
+
+
+## Technologies
+
+- **html** - **css** - **JavaScript** - **react** - **tailwind** - **firebase** - **JWT** - **Stripe** - **node** - **express** - **mongoDB**
