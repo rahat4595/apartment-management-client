@@ -5,9 +5,6 @@ Rent Wise simplifies apartment rentals by providing an easy-to-use platform for 
 
 **Firebase Live Site:** [Rent Wise](https://building-management-73b1d.web.app)
 
-## Category
-
-## assignment12_category_0012
 
 
 ## Features and  Characteristics
